@@ -76,9 +76,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"click print",Toast.LENGTH_SHORT);
                 try {
-                    iPosPrinterService.printText("Hello world EEE", (IPosPrinterCallback) mCallback);
+                    iPosPrinterService.setPrinterPrintDepth(6,mCallback);
+                    iPosPrinterService.setPrinterPrintFontSize(24,mCallback);
+                    iPosPrinterService.printText("Hello world EEE              END", (IPosPrinterCallback) mCallback);
                     iPosPrinterService.printerFeedLines(2,mCallback);
                     iPosPrinterService.printBlankLines(2,2,mCallback);
+                    iPosPrinterService.setPrinterPrintDepth(8,mCallback);
+                    iPosPrinterService.printText("Hello world Bold",mCallback);
+                    iPosPrinterService.setPrinterPrintFontSize(32,mCallback);
+                    iPosPrinterService.printText("Hello world Size Increse",mCallback);
+                    iPosPrinterService.printQRCode("HelloQr",10,2,mCallback);
                     iPosPrinterService.printerPerformPrint(4,mCallback);
                 }catch (Exception exception){
                     Toast.makeText(getApplicationContext(), (CharSequence) exception,Toast.LENGTH_SHORT).show();
