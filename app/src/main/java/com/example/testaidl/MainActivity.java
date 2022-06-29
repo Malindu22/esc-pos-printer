@@ -78,15 +78,19 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     iPosPrinterService.setPrinterPrintDepth(6,mCallback);
                     iPosPrinterService.setPrinterPrintFontSize(24,mCallback);
-                    iPosPrinterService.printText("Hello world EEE              END", (IPosPrinterCallback) mCallback);
+                    iPosPrinterService.printText("Hello world                 END", (IPosPrinterCallback) mCallback);
                     iPosPrinterService.printerFeedLines(2,mCallback);
                     iPosPrinterService.printBlankLines(2,2,mCallback);
+                    iPosPrinterService.PrintSpecFormatText("Hello World Small Text Left","ST",16,0,mCallback);
+                    iPosPrinterService.PrintSpecFormatText("Hello World Small Text Right","ST",16,2,mCallback);
+                    iPosPrinterService.PrintSpecFormatText("Hello World Small Text Center","ST",16,1,mCallback);
                     iPosPrinterService.setPrinterPrintDepth(8,mCallback);
                     iPosPrinterService.printText("Hello world Bold",mCallback);
                     iPosPrinterService.setPrinterPrintFontSize(32,mCallback);
                     iPosPrinterService.printText("Hello world Size Increse",mCallback);
-                    iPosPrinterService.printQRCode("HelloQr",10,2,mCallback);
-                    iPosPrinterService.printerPerformPrint(4,mCallback);
+                    iPosPrinterService.printBarCode("Hello World Barcode",4,8,10,2,mCallback);
+                    iPosPrinterService.printQRCode("Hello World Qr",10,2,mCallback);
+                    iPosPrinterService.printerPerformPrint(18,mCallback);
                 }catch (Exception exception){
                     Toast.makeText(getApplicationContext(), (CharSequence) exception,Toast.LENGTH_SHORT).show();
                 }
