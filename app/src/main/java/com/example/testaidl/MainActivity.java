@@ -18,6 +18,7 @@ import com.iposprinter.iposprinterservice.IPosPrinterService;
 public class MainActivity extends AppCompatActivity {
 
     IPosPrinterService iPosPrinterService;
+    public final static byte[] BOLD_TEXT = new byte[]{0x1b, 0x45, 0x01};
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
@@ -90,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
                     iPosPrinterService.printText("Hello world Size Increse",mCallback);
                     iPosPrinterService.printBarCode("Hello World Barcode",4,8,10,2,mCallback);
                     iPosPrinterService.printQRCode("Hello World Qr",10,2,mCallback);
+                    iPosPrinterService.sendUserCMDData(BOLD_TEXT,mCallback);
+                    iPosPrinterService.printText("Hello world Bold",mCallback);
                     iPosPrinterService.printerPerformPrint(18,mCallback);
                 }catch (Exception exception){
                     Toast.makeText(getApplicationContext(), (CharSequence) exception,Toast.LENGTH_SHORT).show();
